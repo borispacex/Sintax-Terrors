@@ -1,0 +1,1 @@
+docker build -t notification-service:0.1 .

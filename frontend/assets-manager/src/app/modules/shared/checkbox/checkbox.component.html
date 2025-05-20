@@ -1,0 +1,14 @@
+<label class="am-checkbox">
+  <input
+    type="checkbox"
+    class="am-checkbox__input"
+    [class.am-checkbox__input--invalid]="control?.touched && control?.invalid"
+    [checked]="value"
+    (change)="toggleCheckbox($event)"
+    [disabled]="disabled" />
+  <span class="am-checkbox__label">{{ label }}</span>
+</label>
+
+<div *ngIf="errorMessage$ | async as error" class="am-input__error">
+  {{ error }}
+</div>

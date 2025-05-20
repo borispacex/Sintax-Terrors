@@ -1,0 +1,127 @@
+.asset-history {
+  padding: 2rem;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+
+    h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: var(--am-primary-40);
+    }
+  }
+
+  &__content {
+    background: var(--am-preset);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px var(--am-notice-40);
+    padding: 1.5rem;
+    max-height: 580px;
+    overflow-y: auto;
+
+    @media (max-height: 800px) {
+      max-height: 350px;
+    }
+  }
+
+  &__table-container {
+    margin-bottom: 2rem;
+    overflow-x: auto;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--am-table-row);
+    border-radius: 8px;
+    overflow: hidden;
+
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--am-notice-10);
+    }
+
+    th {
+      background: var(--am-primary-20);
+      font-weight: 600;
+      color: var(--am-notice-60);
+    }
+
+    tr:hover {
+      background: var(--am-notice-10);
+    }
+
+    td {
+      color: var(--am-notice-60);
+    }
+  }
+
+  &__transactions {
+    margin-top: 2rem;
+  }
+
+  &__transaction {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px var(--am-black);
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #eee;
+
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--am-notice-10);
+    }
+
+    &-type {
+      font-weight: bold;
+      color: var(--am-primary-40);
+    }
+
+    &-date {
+      color: var(--am-good-20);
+    }
+
+    &-body {
+      p {
+        margin: 0.5rem 0;
+      }
+    }
+
+    &-details {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px var(--am-notice-10);
+    }
+  }
+
+  &__detail {
+    background: var(--am-preset);
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+
+    p {
+      margin: 0.25rem 0;
+    }
+  }
+
+  &__btn {
+    &--primary {
+      background-color: var(--am-primary);
+      color: var(--am-preset);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  }
+}

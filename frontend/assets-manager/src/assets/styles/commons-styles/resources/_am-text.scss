@@ -1,0 +1,98 @@
+$am-txt-sizes: (
+  xs: 10px,
+  sm: 14px,
+  md: 18px,
+  lg: 24px,
+  xl: 32px,
+  xxl: 64px,
+  xxxl: 72px
+);
+
+@mixin am-txt-font-family($font-family: none) {
+  @if $font-family == none {
+    $font-family: "Montserrat", sans-serif;
+  }
+
+  font-family: $font-family;
+}
+
+@mixin am-font-size($line-height, $font-size) {
+  font-size: $font-size;
+  line-height: $line-height;
+}
+
+@mixin am-txt-size($txt-size) {
+  @if $txt-size == xs {
+    @include am-font-size($line-height: 15px, $font-size: map-get($am-txt-sizes, $txt-size))
+  } @else if $txt-size == sm {
+    @include am-font-size($line-height: 21px, $font-size: map-get($am-txt-sizes, $txt-size))
+  } @else if $txt-size == md {
+    @include am-font-size($line-height: 27px, $font-size: map-get($am-txt-sizes, $txt-size))
+  } @else if $txt-size == lg {
+    @include am-font-size($line-height: 36px, $font-size: map-get($am-txt-sizes, $txt-size))
+  } @else if $txt-size == xl {
+    @include am-font-size($line-height: 48px, $font-size: map-get($am-txt-sizes, $txt-size))
+  } @else if $txt-size == xxl {
+    @include am-font-size($line-height: 96px, $font-size: map-get($am-txt-sizes, $txt-size))
+  } @else if $txt-size == xxxl {
+    @include am-font-size($line-height: 108px, $font-size: map-get($am-txt-sizes, $txt-size))
+  } @else {
+    @error "#{$txt-size} is not a valid size"
+  }
+}
+
+.am-txt {
+  @include am-txt-font-family();
+  @include am-font-size($line-height: 24px, $font-size: 16px);
+  font-weight: 400;
+}
+
+.am-txt-xs {
+  @include am-txt-size("xs")
+}
+
+.am-txt-sm {
+  @include am-txt-size("sm")
+}
+
+.am-txt-md {
+  @include am-txt-size("md")
+}
+
+.am-txt-lg {
+  @include am-txt-size("lg")
+}
+
+.am-txt-xl {
+  @include am-txt-size("xl")
+}
+
+.am-txt-xxl {
+  @include am-txt-size("xxl")
+}
+
+.am-txt-bold-sm {
+  font-weight: 600;
+}
+
+.am-txt-bold-md {
+  font-weight: 600;
+}
+
+.am-txt-bold {
+  font-weight: 700;
+}
+
+.am-txt-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.am-txt-two-line-ellipsis {
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+

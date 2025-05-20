@@ -1,0 +1,33 @@
+<am-server-data-table
+  *ngIf="tableData$ | async as tableData"
+  [headers]="tableHeaders"
+  [data]="tableData"
+  [loading]="isLoading"
+  [showActions]="true"
+  [showUpdateAction]="true"
+  [showDeleteAction]="true"
+  (pageChange)="onPageChange($event)"
+  (sortChange)="onSortChange($event)"
+  (onRemoveItem)="onRemoveItem($event, deleteModal)"
+  (onUpdateItem)="onUpdateItem($event, updateModal)"
+  (rowsPerPageChange)="onRowsPerPageChange($event)">
+  <div actions class="am-assignments-actions">
+    <button class="am-btn am-btn--primary" (click)="openModal(contentModal)">
+      <i class="ami-add-square-02 am-btn--icon"></i>
+      New Assignment
+    </button>
+  </div>
+</am-server-data-table>
+
+<ng-template #updateModal>
+  <am-assignment-registration
+    [employee]="activeEmployee"></am-assignment-registration>
+</ng-template>
+
+<ng-template #contentModal>
+  <am-assignment-registration></am-assignment-registration>
+</ng-template>
+
+<ng-template #deleteModal>
+  <am-assignment-delete [employee]="activeEmployee"></am-assignment-delete>
+</ng-template>

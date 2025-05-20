@@ -1,0 +1,161 @@
+@import "src/assets/styles/mixins/am-mixins";
+
+// Bloque principal: recovery-resend
+.recovery-resend {
+  /* Antes public-recovery-resend-container */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__content {
+    /* Antes public-recovery-resend-content */
+    width: 500px;
+    background-color: hsla(var(--am-notice-h), var(--am-notice-s), calc(var(--am-notice-l) - 16%), 0.40);
+    border-radius: 15px;
+    padding: 30px 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    @include am-media-max-width("s") {
+      margin: 0 20px;
+    }
+    @include am-media-max-width(550px) {
+      width: auto;
+    }
+    @include am-media-max-width(360px) {
+      margin: 0 15px;
+    }
+  }
+}
+
+/* Elementos dentro del bloque recovery-resend */
+.recovery-resend__logo {
+  /* Antes public-recovery-resend-content-logo */
+  width: 100px;
+}
+
+.recovery-resend__title {
+  /* Antes public-recovery-resend-content-tittle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  /* Si el span que usa la clase .am-txt es exclusivo de este título */
+  .am-txt {
+    color: var(--am-primary-60);
+  }
+
+  @include am-media-max-width("xs") {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.recovery-resend__description {
+  /* Antes public-recovery-resend-content-description */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  .am-txt {
+    color: var(--am-preset-90);
+    text-align: center;
+  }
+}
+
+/* Elemento para el ícono dentro de la descripción */
+.recovery-resend__icon {
+  /* Antes public-recovery-resend-icon, que estaba en description */
+  font-size: 70px;
+  color: var(--am-preset-90);
+}
+
+.recovery-resend__form {
+  /* Antes public-recovery-resend-content-form */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  width: 70%;
+  margin-top: 20px;
+
+  /* Si deseas que los controles de formulario se ajusten, puedes mantener la regla para .am-form-control */
+  .am-form-control {
+    width: 100%;
+  }
+
+  @include am-media-max-width("s") {
+    width: 60%;
+  }
+  @include am-media-max-width(380px) {
+    width: 85%;
+  }
+}
+
+.recovery-resend__form-buttons {
+  /* Antes public-recovery-resend-content-form-buttons */
+  display: flex;
+  justify-content: space-between;
+
+  @include am-media-max-width("xs") {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+.recovery-resend__cancel-button {
+  /* Antes public-recovery-resend-form-cancel-button */
+  border-radius: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+  width: 47%;
+  color: var(--am-preset-90);
+  background-color: var(--am-notice);
+
+  &:hover {
+    background-color: var(--am-notice-60);
+  }
+  &:active {
+    background-color: var(--am-notice);
+  }
+
+  @include am-media-max-width("xs") {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+.recovery-resend__send-button {
+  /* Antes public-recovery-resend-form-send-button */
+  border-radius: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+  width: 47%;
+  color: var(--am-preset-90);
+  background: linear-gradient(180deg, var(--am-primary) 0%, var(--am-primary-70) 100%);
+
+  &:hover {
+    background: linear-gradient(180deg, var(--am-primary-70) 0%, var(--am-primary-80) 100%);
+  }
+  &:active {
+    background: linear-gradient(180deg, var(--am-primary) 0%, var(--am-primary-70) 100%);
+  }
+
+  @include am-media-max-width("xs") {
+    width: 100%;
+    padding: 10px;
+  }
+}

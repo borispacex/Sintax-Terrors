@@ -1,0 +1,66 @@
+<div #dropdownRoot class="am-dropdown" (click)="toggleDropdown()">
+  <label class="am-dropdown__label">
+    {{ label }}<span *ngIf="isRequired" class="am-dropdown__required">*</span>
+  </label>
+
+  <div
+    class="am-dropdown__field"
+    [class.am-dropdown__field--error]="control?.invalid && (control?.dirty || control?.touched)">
+
+    <ng-container *ngIf="multiple">
+      <span class="am-dropdown__chip" *ngFor="let val of selected">
+        {{ getLabel(val) }}
+        <span class="am-dropdown__chip-remove" (click)="removeItem(val)">×</span>
+      </span>
+      <input
+        #inputElement
+        class="am-dropdown__unstyled"
+        [placeholder]="placeholder"
+        [value]="value"
+        [disabled]="disabled"
+        (input)="onInput($event)"
+        (blur)="onTouched()" />
+      <i
+        class="am-dropdown__icon"
+        [class.am-dropdown__icon--disabled]="disabled"
+        [class.ami-chevron-up]="opened"
+        [class.ami-chevron-down]="!opened"></i>
+    </ng-container>
+
+    <ng-container *ngIf="!multiple">
+      <input
+        #inputElement
+        class="am-dropdown__unstyled"
+        [value]="value"
+        [placeholder]="placeholder"
+        [disabled]="disabled"
+        (input)="onInput($event)"
+        (focus)="opened = true" />
+      <i
+        class="am-dropdown__icon"
+        [class.am-dropdown__icon--disabled]="disabled"
+        [class.ami-chevron-up]="opened"
+        [class.ami-chevron-down]="!opened"></i>
+    </ng-container>
+  </div>
+
+  <div *ngIf="control?.invalid && (control?.dirty || control?.touched)" class="am-dropdown__error">
+    {{ getFirstError() }}
+  </div>
+
+  <ul *ngIf="opened && filteredItems && filteredItems.length" class="am-dropdown__list am-sm-shadow">
+    <li
+      *ngFor="let item of filteredItems"
+      class="am-dropdown__list-item"
+      [class.am-dropdown__list-item--selected]="isSelected(item)"
+      (click)="selectItem(item, $event); $event.stopPropagation()">
+      {{ item.label }}
+    </li>
+  </ul>
+
+  <ul *ngIf="opened && filteredItems && filteredItems.length === 0" class="am-dropdown__list am-sm-shadow">
+    <li class="am-dropdown__list-item am-dropdown__list-item--disabled">
+      No results found
+    </li>
+  </ul>
+</div>

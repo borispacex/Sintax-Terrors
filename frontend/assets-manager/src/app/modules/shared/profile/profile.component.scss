@@ -1,0 +1,114 @@
+.profile {
+  position: relative;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &__avatar {
+    cursor: pointer;
+    border-radius: 50%;
+
+    &--lg {
+      width: 48px;
+      height: 48px;
+    }
+
+    &--md {
+      width: 32px;
+      height: 32px;
+    }
+
+    &--sm {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__user-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__user-data {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+
+  &__username {
+    color: var(--am-preset);
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__email {
+    color: var(--am-preset-90);
+    font-size: 10px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__toggle-icon {
+    font-size: 24px;
+    color: var(--am-preset);
+    cursor: pointer;
+    animation: fadeUp 0.5s ease;
+  }
+
+  &__menu {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: white;
+    border-radius: 4px;
+    min-width: 180px;
+    overflow: hidden;
+    z-index: 1001;
+    margin-top: 4px;
+  }
+
+  &__menu-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      background: #f8f9fa;
+    }
+  }
+
+  &__menu-icon {
+    margin-right: 8px;
+  }
+
+  &__menu-text {
+    font-size: 14px;
+  }
+
+  &__menu-divider {
+    height: 1px;
+    background: #eee;
+    margin: 5px 0;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

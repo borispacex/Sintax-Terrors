@@ -1,0 +1,29 @@
+<am-server-data-table
+  *ngIf="tableData$ | async as tableData"
+  [headers]="tableHeaders"
+  [data]="tableData"
+  [loading]="isLoading"
+  [showActions]="true"
+  [showUpdateAction]="true"
+  [showDeleteAction]="true"
+  (pageChange)="onPageChange($event)"
+  (sortChange)="onSortChange($event)"
+  (onRemoveItem)="onRemoveItem($event)"
+  (onUpdateItem)="onUpdateItem($event, updateModal)"
+  (rowsPerPageChange)="onRowsPerPageChange($event)">
+  <div actions class="am-workspace-actions">
+    <button class="am-btn am-btn--primary" (click)="openModal(contentModal)">
+      <i class="ami-add-square-02 am-btn--icon"></i>
+      New Workspace
+    </button>
+  </div>
+</am-server-data-table>
+
+<ng-template #updateModal>
+  <am-workspace-registration
+    [workspace]="activeWorkspace"></am-workspace-registration>
+</ng-template>
+
+<ng-template #contentModal>
+  <am-workspace-registration></am-workspace-registration>
+</ng-template>

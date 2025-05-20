@@ -1,0 +1,91 @@
+.notification {
+  position: relative;
+
+  &__container {
+    cursor: pointer;
+
+    &:hover {
+      animation: shake 0.4s ease;
+    }
+  }
+
+  &__icon {
+    font-size: 24px;
+    color: white;
+  }
+
+  &__badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #ff4757;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__menu {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: white;
+    border-radius: 4px;
+    min-width: 380px;
+    overflow: hidden;
+    z-index: 1001;
+    margin-top: 4px;
+
+    &--item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 12px 16px;
+      color: #333;
+      text-decoration: none;
+      cursor: pointer;
+
+      &:hover {
+        background: #f8f9fa;
+      }
+
+      &-icon {
+        margin-right: 12px;
+      }
+
+      &-container-title {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &-title {
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      &-sub-title {
+        font-size: 12px;
+      }
+    }
+
+    &-divider {
+      height: 1px;
+      background: #eee;
+      margin: 5px 0;
+    }
+  }
+}
+
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-2px); }
+  40% { transform: translateX(2px); }
+  60% { transform: translateX(-2px); }
+  80% { transform: translateX(2px); }
+  100% { transform: translateX(0); }
+}

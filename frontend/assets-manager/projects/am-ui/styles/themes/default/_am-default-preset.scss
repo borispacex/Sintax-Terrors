@@ -1,0 +1,17 @@
+.am-default-theme {
+  --am-preset-h: 0;
+  --am-preset-s: 0%;
+  --am-preset-l: 100%;
+
+  --am-preset-00: hsl(var(--am-preset-h), var(--am-preset-s), calc(var(--am-preset-l) - 100%));
+  --am-preset-10: hsl(var(--am-preset-h), var(--am-preset-s), calc(var(--am-preset-l) - 90%));
+  --am-preset-20: hsl(var(--am-preset-h), var(--am-preset-s), calc(var(--am-preset-l) - 80%));
+  --am-preset-30: hsl(var(--am-preset-h), var(--am-preset-s), calc(var(--am-preset-l) - 70%));
+  --am-preset-40: hsl(var(--am-preset-h), var(--am-preset-s), calc(var(--am-preset-l) - 60%));
+  --am-preset-50: hsl(var(--am-preset-h), var(--am-preset-s), calc(var(--am-preset-l) - 50%));
+  --am-preset-60: hsl(var(--am-preset-h), var(--am-preset-s), calc(var(--am-preset-l) - 40%));
+  --am-preset-70: hsl(var(--am-preset-h), var(--am-preset-s), calc(var(--am-preset-l) - 30%));
+  --am-preset-80: hsl(var(--am-preset-h), var(--am-preset-s), calc(var(--am-preset-l) - 20%));
+  --am-preset-90: hsl(var(--am-preset-h), var(--am-preset-s), calc(var(--am-preset-l) - 10%));
+  --am-preset: hsl(var(--am-preset-h), var(--am-preset-s), var(--am-preset-l));
+}

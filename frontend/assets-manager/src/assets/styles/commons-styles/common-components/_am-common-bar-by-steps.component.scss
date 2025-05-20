@@ -1,0 +1,77 @@
+.am-bar-by-steps {
+  --am-step-tag-height: 20px;
+  padding: 10px;
+  background-color: var(--am-major-40);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 10px;
+  flex-grow: 1;
+  flex-samink: 1;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.am-step-separator {
+  flex-grow: 4;
+  height: 0;
+  border-bottom: 1px solid var(--am-preset);
+  box-sizing: border-box;
+}
+
+.am-step-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-grow: 1;
+  height: clamp(var(--am-step-tag-height), 100%, calc(var(--am-step-tag-height) * 3));
+  font-size: var(--am-step-tag-height);
+  aspect-ratio: 1/1;
+  color: var(--am-preset);
+}
+
+.am-step {
+  height: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.am-step-default {
+  background-color: var(--am-major);
+  border: 2px solid var(--am-major-60);
+  box-sizing: border-box;
+}
+
+.am-step-success {
+  background-color: var(--am-good-30);
+}
+
+.am-step-error {
+  background-color: var(--am-accent-second);
+}
+
+.am-step-denied {
+  background-color: var(--am-wrong);
+}
+
+.am-step-disable {
+  background-color: var(--am-notice-60);
+  border: 2px solid var(--am-notice-70);
+  box-sizing: border-box;
+}
+
+.am-step-tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--am-preset);
+}
+
+.am-step-active {
+  height: clamp(calc(var(--am-step-tag-height) * 2), 100%, calc(var(--am-step-tag-height) * 6));
+  border: 2px solid var(--am-preset);
+  box-sizing: border-box;
+}

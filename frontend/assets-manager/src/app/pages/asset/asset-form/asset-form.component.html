@@ -1,0 +1,78 @@
+<div class="custom-modal-content">
+  <form [formGroup]="assetForm">
+    <am-input
+      label="Model"
+      placeholder="Model Asset"
+      class="force-focus"
+      formControlName="model"
+      [control]="getControl('model')">
+    </am-input>
+    <am-input
+      label="Serial Number"
+      placeholder="Indicate the serial number"
+      class="force-focus"
+      formControlName="serialNumber"
+      [control]="getControl('serialNumber')">
+    </am-input>
+    <am-autocomplete-dropdown
+      label="Category"
+      placeholder="Select a Category"
+      class="force-focus"
+      formControlName="categoryId"
+      [items]="(category$ | async) ?? []"
+      (onSearch)="searchCategory($event)"
+      [control]="getControl('categoryId')"
+      [multiple]="false"
+    >
+    </am-autocomplete-dropdown>
+    <am-autocomplete-dropdown
+      label="Workspace"
+      placeholder="Select a Workspace"
+      class="force-focus"
+      formControlName="workspaceId"
+      [items]="(workspace$ | async) ?? []"
+      (onSearch)="searchWorkspace($event)"
+      [control]="getControl('workspaceId')"
+      [multiple]="false"
+    >
+    </am-autocomplete-dropdown>
+    <am-input
+      label="Current Value"
+      placeholder="Indicate the current value"
+      class="force-focus"
+      formControlName="purchaseCost"
+      [control]="getControl('purchaseCost')">
+    </am-input>
+    <am-input
+      label="Notes"
+      placeholder="Description"
+      class="force-focus"
+      formControlName="notes"
+      [control]="getControl('notes')">
+    </am-input>
+    <am-input
+      label="Purchase Date"
+      placeholder=""
+      [type]="'date'"
+      class="force-focus"
+      formControlName="purchaseDate"
+      [control]="getControl('purchaseDate')">
+    </am-input>
+    <am-autocomplete-dropdown
+      label="Status"
+      placeholder="Select A Status"
+      [multiple]="false"
+      [items]="assetStatus"
+      formControlName="status"></am-autocomplete-dropdown>
+    <am-progress-bar *ngIf="(loading$ | async) ?? false" [indeterminate]="true"></am-progress-bar>
+  </form>
+</div>
+<div class="modal__actions">
+  <button class="am-btn am-btn__full am-btn--danger" (click)="closeAsset()">Close</button>
+  <button *ngIf="asset" class="am-btn am-btn__full am-btn--success" (click)="viewHistory()">
+    View History
+  </button>
+  <button class="am-btn am-btn__full am-btn--primary"
+          (click)="asset ? updateAsset() : createAsset()"
+          [disabled]="!assetForm.valid">{{ asset ? 'Update' : 'Create' }}</button>
+</div>

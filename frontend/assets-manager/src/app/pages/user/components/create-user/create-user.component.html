@@ -1,0 +1,39 @@
+<div class="modal">
+  <form [formGroup]="assignmentForm">
+    <am-input
+      label="Username"
+      placeholder="Enter a username"
+      class="force-focus"
+      formControlName="username">
+    </am-input>
+    <div class="modal__divider"></div>
+    <am-input
+      label="Password"
+      [type]="'password'"
+      placeholder="Password"
+      class="force-focus"
+      formControlName="password">
+    </am-input>
+    <div class="modal__divider"></div>
+    <am-autocomplete-dropdown
+      label="Role"
+      placeholder="Select a role"
+      [multiple]="false"
+      class="force-focus"
+      [items]="roles$ | async"
+      formControlName="role">
+    </am-autocomplete-dropdown>
+  </form>
+
+  <div class="modal__actions">
+    <button class="am-btn am-btn__full am-btn--danger" (click)="closeModal()">
+      Close
+    </button>
+    <button
+      class="am-btn am-btn__full am-btn--primary"
+      (click)="user === null?saveUser() : updateUser()"
+      [disabled]="!(assignmentForm.valid)">
+      {{user === null ? 'Save': "Update"}}
+    </button>
+  </div>
+</div>

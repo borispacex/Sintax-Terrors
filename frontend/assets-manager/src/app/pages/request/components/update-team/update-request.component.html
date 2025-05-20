@@ -1,0 +1,44 @@
+<form [formGroup]="requestForm">
+  <am-input
+    label="Title"
+    placeholder="title"
+    class="force-focus"
+    formControlName="title">
+  </am-input>
+
+  <am-input
+    label="Description"
+    placeholder="description"
+    class="force-focus"
+    formControlName="description">
+  </am-input>
+
+  <am-autocomplete-dropdown
+    label="Type"
+    placeholder="Select A Type"
+    [multiple]="false"
+    [items]="requestTypeItems"
+    formControlName="type"
+  ></am-autocomplete-dropdown>
+
+  <am-autocomplete-dropdown
+    label="Status"
+    placeholder="Select A Status"
+    [multiple]="false"
+    [items]="requestStatusItems"
+    formControlName="status"
+  ></am-autocomplete-dropdown>
+</form>
+
+<article class="modal__actions">
+  <button class="am-btn am-btn__full am-btn--danger" (click)="closeModal()">
+    Close
+  </button>
+
+  <button
+    class="am-btn am-btn__full am-btn--primary"
+    (click)="updateRequest()"
+    [disabled]="!requestForm.valid">
+    Update
+  </button>
+</article>

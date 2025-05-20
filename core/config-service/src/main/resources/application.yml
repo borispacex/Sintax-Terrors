@@ -1,0 +1,17 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-service
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://git.digitalharborbolivia.com:8081/bootcamp-mid-pathv1/sintax-terrors/core/config-properties
+          username: ${GITLAB_USERNAME:bvargasmt1}
+          password: ${GITLAB_PASSWORD:Onkk941!}
+          default-label: develop
+          clone-on-start: true
+          skip-ssl-validation: true

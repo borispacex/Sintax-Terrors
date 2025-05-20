@@ -1,0 +1,166 @@
+//solo una variable por tamaño
+$xs: 24px;
+$sm: 48px;
+$md: 68px;
+$lg: 80px;
+$xl: 110px;
+$xxl: 140px;
+
+
+.am-avatar-content {
+  display: flex;
+  position: relative;
+  outline: none;
+  user-select: none;
+}
+
+.am-img-error {
+  display: flex;
+  background-color: var(--am-accent-second-80);
+  border: 2px solid var(--am-preset);
+  border-radius: 1000px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--am-preset-30);
+  font-style: normal;
+  font-weight: 700;
+  outline: none;
+  user-select: none;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.xs {
+  font-size: calc(#{$xs} / 3);
+  width: $xs;
+  height: $xs;
+}
+
+.sm {
+  font-size: calc(#{$sm} / 3);
+  width: $sm;
+  height: $sm;
+}
+
+.md {
+  font-size: calc(#{$md} / 3);
+  width: $md;
+  height: $md;
+}
+
+.lg {
+  font-size: calc(#{$lg} / 3);
+  width: $lg;
+  height: $lg;
+}
+
+.xl {
+  font-size: calc(#{$xl} / 3);
+  width: $xl;
+  height: $xl;
+}
+
+.xxl {
+  font-size: calc(#{$xxl} / 3);
+  width: $xxl;
+  height: $xxl;
+}
+
+.rounded {
+  border-radius: 100%;
+}
+
+.semirounded {
+  border-radius: 40%;
+}
+
+.square {
+  border-radius: 7px;
+}
+
+@mixin am-status-now($availability, $size) {
+  width: calc(($size * 25) / 100);
+  height: calc(($size * 25) / 100);
+  border-radius: 50%;
+  border: 1px solid var(--am-preset-hsl);
+  background-color: $availability;
+  position: absolute;
+  left: $size - calc(($size*25)/100);
+  bottom: 0;
+}
+
+.am-status-xs-now-available {
+  @include am-status-now(var(--am-good-30), $xs)
+}
+
+.am-status-sm-now-available {
+  @include am-status-now(var(--am-good-30), $sm)
+}
+
+.am-status-md-now-available {
+  @include am-status-now(var(--am-good-30), $md)
+}
+
+.am-status-lg-now-available {
+  @include am-status-now(var(--am-good-30), $lg)
+}
+
+.am-status-xl-now-available {
+  @include am-status-now(var(--am-good-30), $xl)
+}
+
+.am-status-xxl-now-available {
+  @include am-status-now(var(--am-good-30), $xxl)
+}
+
+.am-status-xs-now-far-away {
+  @include am-status-now(var(--am-accent-second), $xs)
+}
+
+.am-status-sm-now-far-away {
+  @include am-status-now(var(--am-accent-second), $sm)
+}
+
+.am-status-md-now-far-away {
+  @include am-status-now(var(--am-accent-second), $md)
+}
+
+.am-status-lg-now-far-away {
+  @include am-status-now(var(--am-accent-second), $lg)
+}
+
+.am-status-xl-now-far-away {
+  @include am-status-now(var(--am-accent-second), $xl)
+}
+
+.am-status-xxl-now-far-away {
+  @include am-status-now(var(--am-accent-second), $xxl)
+}
+
+.am-status-xs-now-disable {
+  @include am-status-now(var(--am-notice-80), $xs)
+}
+
+.am-status-sm-now-disable {
+  @include am-status-now(var(--am-notice-80), $sm)
+}
+
+.am-status-md-now-disable {
+  @include am-status-now(var(--am-notice-80), $md)
+}
+
+.am-status-lg-now-disable {
+  @include am-status-now(var(--am-notice-80), $lg)
+}
+
+.am-status-xl-now-disable {
+  @include am-status-now(var(--am-notice-80), $xl)
+}
+
+.am-status-xxl-now-disable {
+  @include am-status-now(var(--am-notice-80), $xxl)
+}

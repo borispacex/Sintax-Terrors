@@ -1,0 +1,115 @@
+$border-radius-lg: 16px;
+$border-radius-md: 12px;
+$font-size-sm: 12px;
+$font-size-md: 14px;
+$font-size-lg: 20px;
+$font-size-xl: 24px;
+$spacing-xs: 2px;
+$spacing-sm: 4px;
+$spacing-md: 10px;
+$spacing-lg: 16px;
+$spacing-xl: 24px;
+$spacing-xxl: 36px;
+
+.modal {
+  &__table {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__table-header {
+    display: flex;
+    flex-direction: row;
+    border-radius: $border-radius-lg;
+    background-color: var(--am-primary-20);
+    padding: $spacing-md $spacing-md + 2px;
+    cursor: default;
+  }
+
+  &__table-cell {
+    display: flex;
+    flex: 1;
+    font-size: $font-size-sm;
+    font-weight: 500;
+    color: black;
+
+    &--header {
+      display: flex;
+      flex: 1;
+      font-weight: bold;
+      font-size: $font-size-sm;
+      color: var(--am-primary);
+    }
+
+    &--left {
+      justify-content: flex-end;
+    }
+  }
+
+  &__table-row {
+    display: flex;
+    flex-direction: row;
+    border-radius: $border-radius-md;
+    background-color: white;
+    padding: $spacing-md $spacing-md + 2px;
+    margin-top: $spacing-xs;
+    cursor: default;
+  }
+
+  &__no-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: $spacing-lg;
+    font-size: $font-size-md;
+    color: black;
+  }
+
+  &__progress {
+    margin-top: $spacing-lg;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    gap: $spacing-xl;
+    margin-top: $spacing-lg;
+  }
+
+  &__label {
+    font-size: $font-size-md;
+    color: black;
+    font-weight: 600;
+  }
+
+  &__btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    &--plus {
+      border-radius: $spacing-xxl;
+      width: $spacing-xxl;
+      font-size: $font-size-xl;
+    }
+  }
+
+  &__divider {
+    height: 1px;
+    background-color: var(--am-primary-20);
+    margin-top: $spacing-sm;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__icon {
+    color: var(--am-wrong);
+    font-size: $font-size-lg;
+    cursor: pointer;
+
+    &--success {
+      color: var(--am-good);
+    }
+  }
+}

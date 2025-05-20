@@ -1,0 +1,43 @@
+.navbar {
+  height: 100px;
+  width: calc(100vw - 32px);
+  background-color: var(--am-primary-60);
+  margin-top: 16px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &__logo {
+    width: 40px;
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+
+  &__titles {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--am-preset);
+    margin: 0 0 4px;
+  }
+
+  &__subtitle {
+    font-size: 14px;
+    font-weight: 500;
+    color: #979797;
+    margin: 0;
+  }
+
+  &__divider {
+    width: 2px;
+    background-color: #F4FFF3;
+    height: 100px;
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+}

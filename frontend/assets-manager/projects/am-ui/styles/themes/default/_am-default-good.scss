@@ -1,0 +1,28 @@
+.am-default-theme {
+  --am-good-h: 158;
+  --am-good-s: 71%;
+  --am-good-l: 44%;
+
+  --am-good-10: #hF5FFF8;
+  --am-good-20: #e9ffe9;
+  --am-good-30: #c1ffbc;
+  --am-good-40: #75e093;
+  --am-good: #20bf86;
+  --am-good-60: #09714b;
+
+  --am-good-70: hsl(
+    var(--am-good-h),
+    var(--am-good-s),
+    calc(var(--am-good-l) + 20%)
+  );
+  --am-good-80: hsl(
+    var(--am-good-h),
+    var(--am-good-s),
+    calc(var(--am-good-l) + 30%)
+  );
+  --am-good-90: hsl(
+    var(--am-good-h),
+    var(--am-good-s),
+    calc(var(--am-good-l) + 40%)
+  );
+}

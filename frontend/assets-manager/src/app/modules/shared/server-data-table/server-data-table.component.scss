@@ -1,0 +1,418 @@
+.am-data-table {
+  $self: &;
+  width: 100%;
+  font-size: 14px;
+
+  &__container {
+    overflow-x: auto;
+    margin-bottom: 1rem;
+    max-height: 620px;
+
+    @media (max-height: 800px) {
+      max-height: 420px;
+    }
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: separate;
+    box-shadow: 0 1px 3px var(--am-notice-90);
+    border-spacing: 0 10px;
+  }
+
+  &__header {
+    position: sticky;
+    top: 0;
+    background-color: var(--am-primary-20);
+  }
+
+  &__header-row {
+    border-bottom: 2px var(--am-preset-90);
+  }
+
+  &__header-cell {
+    padding: 16px 12px;
+    font-weight: 700;
+    color: var(--am-primary);
+    text-align: left;
+    position: relative;
+
+    &--sortable {
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--am-primary-90);
+      }
+    }
+  }
+  &__header-cell:first-child {
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+  }
+
+  &__header-cell:last-child {
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+  }
+
+  &__sort-indicator {
+    margin-left: 4px;
+    color: var(--am-notice-40);
+  }
+
+  &__body {
+    background-color: var(--am-preset);
+  }
+
+  &__row {
+    border-radius: 10px;
+    background-color: var(--am-table-row);
+    border-bottom: var(--am-notice-10);
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: var(--am-primary-90);
+      cursor: pointer;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__cell {
+    padding: 16px 12px;
+    color: var(--am-black);
+    font-weight: 500;
+  }
+
+  &__cell:first-child {
+    border-top-left-radius: 0.4rem;
+    border-bottom-left-radius: 0.4rem;
+  }
+
+  &__cell:last-child {
+    border-top-right-radius: 0.4rem;
+    border-bottom-right-radius: 0.4rem;
+  }
+
+  &__header-cell {
+    &--actions {
+      width: 140px;
+      min-width: 140px;
+      text-align: center;
+      padding: 16px 8px;
+      background-color: var(--am-primary-20);
+    }
+  }
+
+  &__cell {
+    &--actions {
+      width: 140px;
+      min-width: 140px;
+      text-align: center;
+      padding: 16px 8px;
+      white-space: nowrap;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+  }
+
+  &__action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &--edit {
+      color: var(--am-primary);
+      background-color: var(--am-primary-90);
+
+      &:hover {
+        background-color: var(--am-primary-80);
+      }
+    }
+
+    &--delete {
+      color: var(--am-wrong);
+      background-color: var(--am-wrong-90);
+
+      &:hover {
+        background-color: var(--am-wrong-80);
+      }
+    }
+
+    i {
+      font-size: 16px;
+    }
+  }
+
+  &__empty-row {
+    text-align: center;
+  }
+
+  &__empty-cell {
+    padding: 24px;
+    color: var(--am-notice-40);
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    padding: 8px 16px;
+    background-color: var(--am-wrong-10);
+    border-radius: 0.4rem;
+  }
+
+  &__rows-per-page {
+    display: flex;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--am-notice-40);
+  }
+
+  &__rows-select {
+    padding: 6px 8px;
+    border: 1px solid var(--am-notice-80);
+    border-radius: 4px;
+    background-color: var(--am-preset);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+
+    &:hover {
+      border-color: var(--am-notice-60);
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__pagination-button {
+    padding: 6px 10px;
+    background-color: var(--am-preset);
+    border: 1px solid var(--am-notice-60);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+    min-width: 32px;
+
+    &:hover:not(:disabled) {
+      background-color: var(--am-notice-80);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  &__page-number {
+    padding: 6px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s;
+    min-width: 32px;
+    text-align: center;
+    display: inline-block;
+
+    &:hover {
+      background-color: var(--am-notice-80);
+    }
+
+    &--active {
+      background-color: var(--am-primary);
+      color: var(--am-preset);
+
+      &:hover {
+        background-color: var(--am-primary-60);
+      }
+    }
+  }
+
+  &__page-info {
+    color: var(--am-notice-40);
+    font-size: 14px;
+  }
+
+  &__search {
+    position: relative;
+    margin-bottom: 16px;
+    font-family: inherit;
+
+    &-input {
+      box-sizing: border-box;
+      height: 48px;
+      padding: 12px 16px 12px 48px;
+      background: var(--am-preset);
+      border: 1px solid var(--am-notice-90);
+      border-radius: 8px;
+      font-size: 14px;
+      color: var(--am-preset-10);
+      outline: none;
+      transition: border-color 0.3s ease;
+      font-family: inherit;
+
+      &:focus {
+        border-color: var(--am-primary);
+        box-shadow: 0 0 0 1px var(--am-primary);
+      }
+
+      &::placeholder {
+        color: var(--am-notice-60);
+      }
+    }
+
+    .ami-search-02 {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--am-notice-60);
+      font-size: 18px;
+      pointer-events: none;
+    }
+  }
+
+  &__filter--container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 768px) {
+  .am-data-table__table,
+  .am-data-table__header,
+  .am-data-table__header-row,
+  .am-data-table__row,
+  .am-data-table__cell {
+    display: block;
+    width: 100%;
+  }
+
+  .am-data-table {
+    &__table {
+      border-spacing: 0;
+      box-shadow: none;
+    }
+
+    &__header {
+      display: none;
+    }
+
+    &__row {
+      margin-bottom: 16px;
+      border: 1px solid var(--am-notice-90);
+      border-radius: 12px;
+      padding: 12px;
+      background: var(--am-preset);
+    }
+
+    &__cell {
+      text-align: left !important;
+      padding: 8px 0;
+      position: relative;
+
+      &::before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: block;
+        margin-bottom: 4px;
+        color: var(--am-notice-60);
+      }
+    }
+
+    &__card {
+      background-color: var(--am-preset);
+      border-radius: 16px;
+      padding: 16px;
+      margin-top: 8px;
+      margin-bottom: 4px;
+
+      &--row {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 8px;
+      }
+
+      &--label {
+        color: var(--am-primary);
+        font-weight: bold;
+      }
+
+      &--value {
+        font-weight: 500;
+      }
+    }
+
+    &__card-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--am-notice-90);
+    }
+
+    &__card-action {
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &--edit {
+        background-color: var(--am-primary);
+        color: var(--am-preset);
+
+        &:hover {
+          background-color: var(--am-primary-60);
+        }
+      }
+
+      &--delete {
+        background-color: var(--am-wrong);
+        color: var(--am-preset);
+
+        &:hover {
+          background-color: var(--am-wrong-60);
+        }
+      }
+    }
+
+    &__footer {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 16px;
+      padding: 8px 16px;
+      background-color: var(--am-notice-10);
+      border-radius: 0.4rem;
+    }
+
+    &__pagination {
+      display: flex;
+      margin-top: 8px;
+      margin-bottom: 8px;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+    }
+  }
+}

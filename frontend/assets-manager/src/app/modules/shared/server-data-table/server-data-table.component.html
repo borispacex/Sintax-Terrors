@@ -1,0 +1,151 @@
+<div class="am-data-table">
+
+  <div class="am-data-table__filter--container">
+    <ng-content select="[filter]"></ng-content>
+    <ng-content select="[actions]"></ng-content>
+  </div>
+
+  <ng-container *ngIf="(screenSize$ | async) as screenSize">
+    <div class="am-data-table__container" *ngIf="screenSize !== 'xs'">
+      <table class="am-data-table__table">
+        <thead class="am-data-table__header">
+        <tr class="am-data-table__header-row">
+          <th
+            *ngFor="let header of headers"
+            class="am-data-table__header-cell"
+            [class.am-data-table__header-cell--sortable]="header.sortable"
+            [style.width]="header.width"
+            [style.text-align]="header.align"
+            (click)="header.sortable && onSort(header.key)">
+
+            {{ header.label }}
+            <span
+              *ngIf="header.sortable && currentSortField === header.key"
+              class="am-data-table__sort-indicator">
+                <i class="ami"
+                   [ngClass]="{
+                     'ami-arrow-up-contained-01': currentSortDirection === 'asc',
+                     'ami-arrow-down-contained-01': currentSortDirection === 'desc'
+                   }">
+                </i>
+              </span>
+          </th>
+          <th *ngIf="showActions" class="am-data-table__header-cell am-data-table__header-cell--actions">
+            Actions
+          </th>
+        </tr>
+        </thead>
+
+        <tbody class="am-data-table__body" *ngIf="!loading">
+        <tr *ngFor="let row of data?.items" class="am-data-table__row">
+
+          <td
+            *ngFor="let header of headers"
+            [class]="getCellClasses(header)"
+            [style.width]="header.width">
+            {{ row[header.key] }}
+          </td>
+          <td *ngIf="showActions" class="am-data-table__cell am-data-table__cell--actions">
+            <ng-container *ngIf="showUpdateAction">
+              <span class="am-data-table__action am-data-table__action--edit" (click)="updateItem(row)">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </span>
+            </ng-container>
+            <ng-container *ngIf="showDeleteAction">
+              <span class="am-data-table__action am-data-table__action--delete" (click)="removeItem(row)">
+                <i class="fa-solid fa-trash"></i>
+              </span>
+            </ng-container>
+          </td>
+        </tr>
+
+        <tr *ngIf="!data?.items?.length" class="am-data-table__empty-row">
+          <td [colSpan]="headers.length" class="am-data-table__empty-cell">
+            No data available
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="am-data-table__mobile-cards" *ngIf="screenSize === 'xs'">
+      <div *ngFor="let row of data?.items" class="am-data-table__card">
+        <div *ngFor="let header of headers" class="am-data-table__card--row">
+          <span class="am-data-table__card--label">{{ header.label }}</span>
+          <span class="am-data-table__card--value">{{ row[header.key] }}</span>
+        </div>
+        <div *ngIf="showActions" class="am-data-table__card-actions">
+          <ng-container *ngIf="showUpdateAction">
+            <button class="am-data-table__card-action am-data-table__card-action--edit" (click)="updateItem(row)">
+              Edit
+            </button>
+          </ng-container>
+          <ng-container *ngIf="showDeleteAction">
+            <button class="am-data-table__card-action am-data-table__card-action--delete" (click)="removeItem(row)">
+              Delete
+            </button>
+          </ng-container>
+        </div>
+      </div>
+
+      <div *ngIf="!data?.items?.length" class="am-data-table__empty-card">
+        No data available
+      </div>
+    </div>
+  </ng-container>
+
+  <div class="am-data-table__footer" *ngIf="data">
+    <div class="am-data-table__rows-per-page">
+      <span>Show:</span>
+      <select
+        class="am-data-table__rows-select"
+        [value]="data.pageSize"
+        (change)="onRowsPerPageChange($event)">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+      </select>
+    </div>
+
+    <div class="am-data-table__pagination">
+      <button class="am-data-table__pagination-button"
+              [disabled]="data.currentPage === 1"
+              (click)="onPageChange(1)">
+        «
+      </button>
+
+      <button
+        class="am-data-table__pagination-button"
+        (click)="onPageChange(data.currentPage - 1)"
+        [disabled]="data.currentPage === 1">
+        ‹
+      </button>
+
+      <button
+        *ngFor="let page of getPageNumbers()"
+        class="am-data-table__pagination-button"
+        [class.am-data-table__page-number--active]="page === data.currentPage"
+        (click)="onPageChange(page)">
+        {{ page }}
+      </button>
+
+      <button
+        class="am-data-table__pagination-button"
+        (click)="onPageChange(data.currentPage + 1)"
+        [disabled]="data.currentPage === data.totalPages">
+        ›
+      </button>
+
+      <button class="am-data-table__pagination-button"
+              [disabled]="data.currentPage === data.totalPages"
+              (click)="onPageChange(data.totalPages)">
+        »
+      </button>
+    </div>
+
+    <div class="am-data-table__page-info">
+      {{ data.items.length }} of {{ data.totalItems }}
+    </div>
+  </div>
+</div>

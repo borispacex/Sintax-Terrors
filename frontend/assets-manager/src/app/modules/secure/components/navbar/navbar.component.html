@@ -1,0 +1,24 @@
+<nav class="navbar">
+  <div class="navbar__container">
+    <button class="navbar__toggle" (click)="toggleSidebar()">
+      <i class="ami-menu-04"></i>
+    </button>
+    <img
+      class="navbar__container--logo"
+      src="assets/images/logo_dark.svg"
+      alt="Logo" />
+    <div>
+      <h2 class="navbar__container--title">IT Management</h2>
+      <h2 class="navbar__container--sub-title">Digital Harbor</h2>
+    </div>
+
+    <div class="navbar__container--spacer-vert"></div>
+  </div>
+
+  <ng-container *ngIf="(screenSize$ | async) as screenSize">
+    <div class="navbar__right">
+      <am-notification *ngIf="screenSize !== 'xs'"></am-notification>
+      <am-profile [detail]="screenSize !== 'xs'"></am-profile>
+    </div>
+  </ng-container>
+</nav>

@@ -1,0 +1,45 @@
+<form [formGroup]="teamForm">
+  <am-input
+    label="Name"
+    placeholder="name"
+    class="force-focus"
+    formControlName="name">
+  </am-input>
+
+  <am-input
+    label="Description"
+    placeholder="description"
+    class="force-focus"
+    formControlName="description">
+  </am-input>
+
+  <am-autocomplete-dropdown
+    label="Project Manager"
+    [multiple]="false"
+    [items]="(employees$ | async) ?? []"
+    placeholder="Select A Project Manager"
+    (onSearch)="searchEmployees($event)"
+    formControlName="projectManagerId"
+  ></am-autocomplete-dropdown>
+
+  <am-autocomplete-dropdown
+    label="Status"
+    placeholder="Select A Status"
+    [multiple]="false"
+    [items]="isActiveItems"
+    formControlName="isActive"
+  ></am-autocomplete-dropdown>
+</form>
+
+<article class="modal__actions">
+  <button class="am-btn am-btn__full am-btn--danger" (click)="closeModal()">
+    Close
+  </button>
+
+  <button
+    class="am-btn am-btn__full am-btn--primary"
+    (click)="createTeam()"
+    [disabled]="!teamForm.valid">
+    Create
+  </button>
+</article>

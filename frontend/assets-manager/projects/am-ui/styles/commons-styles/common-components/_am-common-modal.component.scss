@@ -1,0 +1,51 @@
+.am-modal-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: hsla(var(--am-major-h), var(--am-major-s), calc(var(--am-major-l) + 40%), 0.30);
+  backdrop-filter: blur(6px);
+}
+
+.am-modal {
+  margin: 0 20%;
+  border-radius: 16px;
+  box-shadow: 0px 4px 4px var(--am-preset-40);
+}
+
+.am-modal-header {
+  color: var(--am-preset);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 16px;
+  border-radius: 16px 16px 0px 0px;
+  background: linear-gradient(77.08deg, var(--am-major-40) 3.43%, var(--am-major-60) 95.02%);
+}
+
+.am-modal-title {
+  box-sizing: border-box;
+  padding: 0px 8px;
+}
+
+.am-modal-close {
+  box-sizing: border-box;
+  padding: 0px 8px;
+}
+
+.am-modal-body {
+  color: var(--am-major-40);
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  padding: 16px;
+  gap: 8px;
+  border-radius: 0px 0px 16px 16px;
+  background-color: hsla(var(--am-preset-h), var(--am-preset-s), var(--am-preset-l), 0.8);
+}

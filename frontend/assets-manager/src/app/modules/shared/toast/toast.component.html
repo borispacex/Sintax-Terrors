@@ -1,0 +1,12 @@
+<div class="toast">
+  <div class="toast__container">
+    <div
+      *ngFor="let toast of toasts$ | async"
+      class="toast__item toast__item--{{toast.type}} am-sm-shadow">
+      <i
+        class="ami-information-circle-contained toast__icon toast__icon--{{toast.type}}">
+      </i>
+      <p class="toast__description">{{ toast.message }}</p>
+    </div>
+  </div>
+</div>

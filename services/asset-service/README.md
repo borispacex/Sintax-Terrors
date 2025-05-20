@@ -1,0 +1,1 @@
+docker build -t asset-service:0.1 .

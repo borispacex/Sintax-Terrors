@@ -1,0 +1,22 @@
+:host {
+  width: 100%;
+}
+
+.main__content {
+  margin-right: 16px;
+  margin-top: 16px;
+}
+
+@media (min-width: 600px) {
+  .main__content {
+    margin-left: 32px;
+    margin-right: 48px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main__content {
+    margin-left: 64px;
+    margin-right: 86px;
+  }
+}

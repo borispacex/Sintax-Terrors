@@ -1,0 +1,40 @@
+@import "src/assets/styles/mixins/am-mixins";
+
+:host {
+  display: flex;
+  width: 100vw;
+}
+
+.public-card {
+  &__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__logo {
+    width: 40px;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+  &__forgot-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 8px;
+    margin-top: 8px;
+  }
+
+  &__forgot-password {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--am-primary-60);
+    text-decoration: underline;
+    text-align: end;
+    cursor: pointer;
+  }
+}

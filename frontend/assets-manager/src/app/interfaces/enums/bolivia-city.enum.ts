@@ -1,0 +1,11 @@
+export enum BoliviaCity {
+  BENI = 'BENI',
+  COCHABAMBA = 'COCHABAMBA',
+  CHUQUISACA = 'CHUQUISACA',
+  LA_PAZ = 'LA_PAZ',
+  PANDO = 'PANDO',
+  TARIJA = 'TARIJA',
+  SANTA_CRUZ = 'SANTA_CRUZ',
+  POTOSI = 'POTOSI',
+  ORURO = 'ORURO',
+}

@@ -1,0 +1,34 @@
+{
+  "/asset-manager/**": {
+    "target": "http://localhost:8080/asset-service/",
+    "secure": false,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/asset-manager/": ""
+    }
+  },
+  "/notification-manager/**": {
+    "target": "http://localhost:8080/notification-service/",
+    "secure": false,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/notification-manager/": ""
+    }
+  },
+  "/auth-manager/private/**": {
+    "target": "http://localhost:8080/auth-service/auth/api/protected/private/",
+    "secure": false,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/auth-manager/private/": ""
+    }
+  },
+  "/auth-manager/public/**": {
+    "target": "http://localhost:8080/auth-service/auth/api/protected/public/auth/",
+    "secure": false,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/auth-manager/public/": ""
+    }
+  }
+}

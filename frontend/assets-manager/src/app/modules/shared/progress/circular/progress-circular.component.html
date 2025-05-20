@@ -1,0 +1,29 @@
+<div class="progress-wrapper" [ngClass]="{ 'indeterminate': indeterminate }">
+  <svg *ngIf="!indeterminate"
+       [attr.width]="size"
+       [attr.height]="size"
+       [attr.viewBox]="'0 0 ' + size + ' ' + size">
+    <circle
+      class="progress-background"
+      [attr.cx]="size / 2"
+      [attr.cy]="size / 2"
+      [attr.r]="radius"
+      [attr.stroke-width]="strokeWidth"
+    ></circle>
+
+    <circle
+      [attr.transform]="'rotate(-90, ' + (size / 2) + ', ' + (size / 2) + ')'"
+      [attr.stroke-dasharray]="circumference"
+      [attr.stroke-dashoffset]="indeterminate ? null : dashOffset"
+      [attr.stroke]="color"
+      [attr.stroke-width]="strokeWidth"
+      [attr.r]="radius"
+      [attr.cx]="size / 2"
+      [attr.cy]="size / 2"
+      fill="none"
+      [class.indeterminate]="indeterminate"
+    />
+  </svg>
+
+  <div *ngIf="indeterminate" class="spinner"></div>
+</div>

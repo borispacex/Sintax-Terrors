@@ -1,0 +1,16 @@
+<article class="modal__container am-custom-scroll-hidden" [ngClass]="{ 'modal__container--show': show }">
+  <section class="modal__content" [ngClass]="{ 'modal__content--scrollable': options.scrollable }">
+    <section class="modal__window" [ngClass]="'modal__window--' + options.size">
+      <section class="modal__header">
+        <section class="am-txt am-txt-sm modal__title">
+          {{ options.tittle }}
+        </section>
+        <i class="ami-x-circle-contained modal__close am-icon-x-o" (click)="hideModal()"></i>
+      </section>
+
+      <section class="modal__body" [ngClass]="{ 'modal__body--scrollable': options.scrollable, 'am-custom-scroll-hidden': options.scrollable }">
+        <ng-container *ngTemplateOutlet="content"></ng-container>
+      </section>
+    </section>
+  </section>
+</article>

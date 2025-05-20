@@ -1,0 +1,19 @@
+.modal {
+  &__progress {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+  }
+}
+
+.am-team-actions {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: flex-end;
+}

@@ -1,0 +1,120 @@
+<div class="am-data-table">
+
+  <div class="am-data-table__filter--container">
+    <div class="am-data-table__search" *ngIf="searchEnabled">
+      <input type="text"
+             class="am-data-table__search-input"
+             [placeholder]="searchPlaceholder"
+             [(ngModel)]="searchTerm"
+             (ngModelChange)="onSearchChange($event)">
+      <i class="ami-search-02"></i>
+    </div>
+    <ng-content select="[actions]"></ng-content>
+  </div>
+
+
+  <ng-container *ngIf="(screenSize$ | async) as screenSize">
+    <div class="am-data-table__container" *ngIf="screenSize !== 'xs'">
+      <table class="am-data-table__table">
+        <thead class="am-data-table__header">
+        <tr class="am-data-table__header-row">
+          <th *ngFor="let header of headers"
+              class="am-data-table__header-cell"
+              [class.am-data-table__header-cell--sortable]="sortable"
+              [style.text-align]="header.align || 'left'"
+              [style.width]="header.width || 'auto'"
+              (click)="sort(header.key)">
+            {{ header.label }}
+            <span *ngIf="sortable && sortField === header.key" class="am-data-table__sort-indicator">
+            <i class="ami"
+               [ngClass]="{
+                 'ami-arrow-up-contained-01': sortDirection === 'asc',
+                 'ami-arrow-down-contained-01': sortDirection === 'desc'
+               }">
+            </i>
+          </span>
+          </th>
+        </tr>
+        </thead>
+        <tbody class="am-data-table__body">
+        <tr *ngFor="let row of paginatedData"
+            class="am-data-table__row"
+            (click)="onRowClick(row)">
+          <td *ngFor="let header of headers"
+              class="am-data-table__cell"
+              [style.text-align]="header.align || 'left'">
+            {{ row[header.key] }}
+          </td>
+        </tr>
+        <tr *ngIf="paginatedData.length === 0" class="am-data-table__empty-row">
+          <td [attr.colspan]="headers.length" class="am-data-table__empty-cell">
+            No data available
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="am-data-table__mobile-cards" *ngIf="screenSize === 'xs'">
+      <div *ngFor="let row of paginatedData" class="am-data-table__card" (click)="onRowClick(row)">
+        <div *ngFor="let header of headers" class="am-data-table__card--row">
+          <span class="am-data-table__card--label">{{ header.label }}</span>
+          <span class="am-data-table__card--value">{{ row[header.key] }}</span>
+        </div>
+      </div>
+
+      <div *ngIf="paginatedData.length === 0" class="am-data-table__empty-card">
+        No data available
+      </div>
+    </div>
+  </ng-container>
+
+  <div class="am-data-table__footer">
+    <div class="am-data-table__rows-per-page" *ngIf="pagination.rowsPerPageOptions?.length">
+      <span>Rows per page:</span>
+      <select class="am-data-table__rows-select"
+              [(ngModel)]="pagination.rowsPerPage"
+              (change)="changeRowsPerPage(pagination.rowsPerPage)">
+        <option *ngFor="let option of pagination.rowsPerPageOptions" [ngValue]="option">
+          {{ option }}
+        </option>
+      </select>
+    </div>
+
+    <div class="am-data-table__pagination">
+      <button class="am-data-table__pagination-button"
+              [disabled]="currentPage === 1"
+              (click)="changePage(1)">
+        «
+      </button>
+      <button class="am-data-table__pagination-button"
+              [disabled]="currentPage === 1"
+              (click)="changePage(currentPage - 1)">
+        ‹
+      </button>
+
+      <span *ngFor="let page of getPageNumbers()"
+            class="am-data-table__page-number"
+            [class.am-data-table__page-number--active]="page === currentPage"
+            (click)="changePage(page)">
+        {{ page }}
+      </span>
+
+      <button class="am-data-table__pagination-button"
+              [disabled]="currentPage === totalPages"
+              (click)="changePage(currentPage + 1)">
+        ›
+      </button>
+      <button class="am-data-table__pagination-button"
+              [disabled]="currentPage === totalPages"
+              (click)="changePage(totalPages)">
+        »
+      </button>
+    </div>
+
+    <div class="am-data-table__page-info">
+      {{ pageRange.start }} - {{ pageRange.end }} of {{ filteredData.length }}
+    </div>
+  </div>
+
+</div>

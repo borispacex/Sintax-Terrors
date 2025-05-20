@@ -1,0 +1,14 @@
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+input[type="checkbox"].invalid {
+  outline: var(--am-wrong);
+  color: var(--am-wrong);
+}
+.checkbox-label {
+  color: var(--am-preset-10);
+}

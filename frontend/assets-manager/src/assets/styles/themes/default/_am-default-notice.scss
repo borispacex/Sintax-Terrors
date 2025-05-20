@@ -1,0 +1,28 @@
+.am-default-theme {
+  --am-notice-h: 0;
+  --am-notice-s: 0%;
+  --am-notice-l: 50%;
+
+  --am-notice-10: #f4f4f4;
+  --am-notice-20: #e6e6e6;
+  --am-notice-30: #d7d7d7;
+  --am-notice-40: #c4c4c4;
+  --am-notice: #969696;
+  --am-notice-60: #565656;
+
+  --am-notice-70: hsl(
+    var(--am-notice-h),
+    var(--am-notice-s),
+    calc(var(--am-notice-l) + 20%)
+  );
+  --am-notice-80: hsl(
+    var(--am-notice-h),
+    var(--am-notice-s),
+    calc(var(--am-notice-l) + 30%)
+  );
+  --am-notice-90: hsl(
+    var(--am-notice-h),
+    var(--am-notice-s),
+    calc(var(--am-notice-l) + 40%)
+  );
+}

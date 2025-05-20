@@ -1,0 +1,51 @@
+/*
+* CUSTOM SCROLL
+* ====
+*/
+%am-custom-scroll-firefox {
+  scrollbar-color: var(--am-preset-80) transparent;
+  scrollbar-width: thin;
+}
+
+%am-custom-scroll-webkit::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+%am-custom-scroll-webkit::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+%am-custom-scroll-webkit::-webkit-scrollbar-thumb {
+  background-color: var(--am-preset-80);
+  border: 6px solid transparent;
+  border-radius: 6px;
+}
+
+%am-custom-scroll-hidden-firefox {
+  scrollbar-color: var(--am-preset-80) transparent;
+  scrollbar-width: none;
+}
+
+%am-custom-scroll-hidden-webkit::-webkit-scrollbar {
+  height: 0;
+  width: 0;
+}
+
+%am-custom-scroll-hidden-webkit::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+%am-custom-scroll-hidden-webkit::-webkit-scrollbar-thumb {
+  background-color: var(--am-preset-80);
+  border: 6px solid transparent;
+  border-radius: 6px;
+}
+
+%am-custom-scroll-hover:hover::-webkit-scrollbar-thumb {
+  visibility: visible;
+}
+
+%am-custom-scroll-hover::-webkit-scrollbar-thumb {
+  visibility: hidden;
+}

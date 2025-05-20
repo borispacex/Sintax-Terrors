@@ -1,0 +1,52 @@
+<div class="asset-history">
+  <div class="asset-history__header">
+    <button class="asset-history__btn asset-history__btn--primary" (click)="goBack()">
+      <i class="ami-chevron-left"></i>
+      Back to Assets
+    </button>
+    <h1>Asset History</h1>
+  </div>
+
+  <div class="asset-history__content">
+    <div class="asset-history__table-container">
+      <table class="asset-history__table">
+        <thead>
+        <tr>
+          <th>Date</th>
+          <th>Type</th>
+          <th>Employee</th>
+          <th>Note</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let transaction of assetsHistory$ | async">
+          <td>{{ transaction.transactionDate | date:'medium' }}</td>
+          <td>{{ transaction.transactionType }}</td>
+          <td>{{ transaction.employeeName }}</td>
+          <td>{{ transaction.note }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="asset-history__transactions">
+      <div *ngFor="let transaction of assetsHistory$ | async" class="asset-history__transaction">
+        <div class="asset-history__transaction-header">
+          <span class="asset-history__transaction-type">{{ transaction.transactionType }}</span>
+          <span class="asset-history__transaction-date">{{ transaction.transactionDate | date:'medium' }}</span>
+        </div>
+        <div class="asset-history__transaction-body">
+          <p><strong>Employee:</strong> {{ transaction.employeeName }}</p>
+          <p *ngIf="transaction.note"><strong>Note:</strong> {{ transaction.note }}</p>
+          <div class="asset-history__transaction-details">
+            <div *ngFor="let detail of transaction.details" class="asset-history__detail">
+              <p><strong>Asset:</strong> {{ detail.assetModel }} ({{ detail.assetSerialNumber }})</p>
+              <p><strong>Direction:</strong> {{ detail.direction }}</p>
+              <p><strong>Reason:</strong> {{ detail.reason }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

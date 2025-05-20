@@ -1,0 +1,11 @@
+<div *ngIf="employeeData$ | async " class="dashboard-chart dashboard-chart--pie">
+  <canvas baseChart
+          [data]="pieChartData"
+          [labels]="pieChartLabels"
+          [chartType]="pieChartType"
+          [colors]="pieChartColors"
+          [legend]="true"
+          [options]="pieChartOptions">
+  </canvas>
+</div>
+

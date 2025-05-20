@@ -1,0 +1,44 @@
+<am-card class="public-card">
+  <div card-header class="public-card__header">
+    <img src="assets/images/logo_ligth.svg" alt="imagen" class="public-card__logo" />
+    <h2 class="public-card__title">Welcome back!</h2>
+  </div>
+
+  <div card-body class="public-card__body">
+    <form [formGroup]="loginForm">
+      <am-ui-input
+        label="Username"
+        placeholder="Enter your username..."
+        class="public-card__input force-focus"
+        formControlName="username">
+      </am-ui-input>
+
+      <am-ui-input
+        label="Password"
+        type="password"
+        placeholder="Enter your password..."
+        class="public-card__input force-focus"
+        formControlName="password">
+      </am-ui-input>
+
+      <div class="public-card__forgot-container">
+        <span class="public-card__forgot-password" (click)="redirectToPasswordRecovery()">Forgot your password?</span>
+      </div>
+
+      <am-ui-progress-bar
+        *ngIf="loading"
+        [indeterminate]="true"
+        class="public-card__progress">
+      </am-ui-progress-bar>
+    </form>
+  </div>
+
+  <div card-footer class="public-card__footer">
+    <button
+      class="public-card__button am-btn am-btn__full am-btn--primary"
+      (click)="login()"
+      [disabled]="!loginForm.valid">
+      Login
+    </button>
+  </div>
+</am-card>

@@ -1,0 +1,15 @@
+<article class="secure">
+  <am-navbar (toggleSidebarEvent)="toggleSidebar()"></am-navbar>
+
+  <section class="secure__container">
+    <am-sidebar [isCollapsed]="isSidebarCollapsed" [showMobileSidebar]="showMobileSidebar">
+    </am-sidebar>
+
+    <am-main-content>
+      <am-breadcrumb></am-breadcrumb>
+      <router-outlet></router-outlet>
+    </am-main-content>
+  </section>
+
+  <am-modal></am-modal>
+</article>

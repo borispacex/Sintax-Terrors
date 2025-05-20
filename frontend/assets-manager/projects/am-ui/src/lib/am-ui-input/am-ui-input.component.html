@@ -1,0 +1,21 @@
+<div class="am-input">
+  <label class="am-input__label">
+    {{ label }}<span *ngIf="isRequired" class="am-input__required">*</span>
+  </label>
+
+  <input
+    #inputElement
+    class="am-input__field"
+    [class.am-input__field--error]="control?.invalid && (control?.dirty || control?.touched)"
+    [type]="type"
+    [placeholder]="placeholder"
+    [value]="value"
+    [disabled]="disabled"
+    (input)="onInput($event)"
+    (blur)="onTouched()"
+  >
+
+  <div *ngIf="control?.invalid && (control?.dirty || control?.touched)" class="am-input__error">
+    {{ getFirstError() }}
+  </div>
+</div>

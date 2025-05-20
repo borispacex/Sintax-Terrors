@@ -1,0 +1,28 @@
+<!-- table -->
+<am-server-data-table
+  *ngIf="tableData$ | async as tableData"
+  [headers]="tableHeaders"
+  [data]="tableData"
+  [loading]="isLoading"
+  [showActions]="true"
+  [showUpdateAction]="true"
+  [showDeleteAction]="true"
+  (pageChange)="onPageChange($event)"
+  (sortChange)="onSortChange($event)"
+  (onRemoveItem)="onRemoveItem($event)"
+  (onUpdateItem)="onUpdateItem($event, updateModal)"
+  (rowsPerPageChange)="onRowsPerPageChange($event)">
+  <div actions class="am-asset-actions">
+    <button class="am-btn am-btn--primary" (click)="openModal(registerModal)">
+      <i class="ami-add-square-02 am-btn--icon"></i>
+      New Asset
+    </button>
+  </div>
+</am-server-data-table>
+<!-- content for modal -->
+<ng-template #registerModal>
+  <am-asset-form></am-asset-form>
+</ng-template>
+<ng-template #updateModal>
+  <am-asset-form [asset]="activeAsset"></am-asset-form>
+</ng-template>

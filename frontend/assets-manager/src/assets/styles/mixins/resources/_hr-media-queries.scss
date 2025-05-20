@@ -1,0 +1,125 @@
+// Breakpoints
+$mq-breakpoints: (
+  xxs: 5px,
+  xs: 480px,
+  s: 720px,
+  m: 840px,
+  l: 960px,
+  xl: 1024px
+);
+
+//This function allow to convert to px unit
+@function am-convert-to-px($breakpoint) {
+  @if type-of($breakpoint) == number {
+    @if unit($breakpoint) == "em" {
+      @return ($breakpoint / 1em) * 16px;
+    } @else if unit($breakpoint) == "rem" {
+      @return ($breakpoint / 1rem) * 16px;
+    } @else if unit($breakpoint) == "px" {
+      @return $breakpoint;
+    } @else {
+      @error "The am-convert-to-px() function only accepts numbers in units of: em or rem or px.";
+    }
+  } @else {
+    @error "The am-convert-to-px() function only accepts values of type number, please verify the value.";
+  }
+}
+
+@function am-get-breakpoint($breakpoint) {
+  @return map-get($mq-breakpoints, $breakpoint);
+}
+
+@function am-is-breakpoint-defined($breakpoint) {
+  @if map-get($mq-breakpoints, $breakpoint) {
+    @return true;
+  } @else {
+    @return false;
+  }
+}
+
+@function am-is-valid-breakpoint($breakpoint) {
+  @if type-of($breakpoint) == number and (unit($breakpoint) == "px" or unit($breakpoint) == "em" or unit($breakpoint) == "rem") {
+    @return true;
+  } @else {
+    @return false;
+  }
+}
+
+@mixin am-media-min-to-max-width($min-width-breakpoint, $max-width-breakpoint, $media-type: "screen") {
+  $initial-media-property: "min-width";
+  $final-media-property: "max-width";
+
+  @if am-is-breakpoint-defined($min-width-breakpoint) and am-is-breakpoint-defined($max-width-breakpoint) {
+    $max-width-breakpoint-value: am-get-breakpoint($max-width-breakpoint);
+    $min-width-breakpoint-value: am-get-breakpoint($min-width-breakpoint);
+
+    @if $max-width-breakpoint-value > $min-width-breakpoint-value {
+      @media only #{$media-type} and (#{$initial-media-property}: $min-width-breakpoint-value) and (#{$final-media-property}: ($max-width-breakpoint-value - 1px)) {
+        @content;
+      }
+    } @else {
+      @error "The second argument must be greater than the first in the am-media-min-to-max-width";
+    }
+  } @else {
+    @error "The breakpoints are not defined in the breakpoint list";
+  }
+}
+
+@mixin am-media-min-to-max-width-custom($min-width-breakpoint-custom, $max-width-breakpoint-custom, $media-type: "screen") {
+  $initial-media-property: "min-width";
+  $final-media-property: "max-width";
+
+  @if am-is-valid-breakpoint($min-width-breakpoint-custom) and am-is-valid-breakpoint($max-width-breakpoint-custom) {
+
+    $max-width-breakpoint-value-px: am-convert-to-px($max-width-breakpoint-custom);
+    $min-width-breakpoint-value-px: am-convert-to-px($min-width-breakpoint-custom);
+
+    @if $max-width-breakpoint-value-px > $min-width-breakpoint-value-px {
+      @media only #{$media-type} and (#{$initial-media-property}: $min-width-breakpoint-value-px) and (#{$final-media-property}: ($max-width-breakpoint-value-px - 1px)) {
+        @content;
+      }
+    } @else {
+      @error "The second argument of the mixin am-media-from-to() must be greater than the first value";
+    }
+  } @else {
+    @error "The arguments of the mixin am-media-from-to() must be from breakpoints (#{map-keys($mq-breakpoints)}) or numbers in px, em or rem";
+  }
+}
+
+// This mixin allows to establish specific styles to devices that have a minimum size to the value entered as breakpoint.
+// This mixin can receive breakpoints no defined in breakpoint list.
+@mixin am-media-min-width($min-width-breakpoint, $media-type: "screen") {
+
+  $media-property: "min-width";
+
+  @if am-is-breakpoint-defined($min-width-breakpoint) {
+    @media only #{$media-type} and (#{$media-property}: am-get-breakpoint($min-width-breakpoint)) {
+      @content;
+    }
+  } @else if am-is-valid-breakpoint($min-width-breakpoint) {
+    @media only #{$media-type} and (#{$media-property}: $min-width-breakpoint) {
+      @content;
+    }
+  } @else {
+    @error "The mixin am-media-min-width() can only receive a breakpoint from the (#{map-keys($mq-breakpoints)}) or a number in px, em or rem";
+  }
+}
+
+// This mixin allows to establish specific styles to devices that have a maximum size to the value entered as breakpoint.
+// This mixin can receive breakpoints no defined in breakpoint list.
+@mixin am-media-max-width($max-width-breakpoint, $media-type: "screen") {
+
+  $media-property: "max-width";
+
+  @if am-is-breakpoint-defined($max-width-breakpoint) {
+    @media only #{$media-type} and (#{$media-property}: am-get-breakpoint($max-width-breakpoint)) {
+      @content;
+    }
+  } @else if am-is-valid-breakpoint($max-width-breakpoint) {
+    @media only #{$media-type} and (#{$media-property}: am-convert-to-px($max-width-breakpoint)) {
+      @content;
+    }
+  } @else {
+    @error "The mixin am-media-to() can only receive a breakpoint from the (#{map-keys($mq-breakpoints)}) or a number in px, em or rem";
+  }
+}

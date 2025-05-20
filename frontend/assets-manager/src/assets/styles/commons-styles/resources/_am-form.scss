@@ -1,0 +1,36 @@
+.am-form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.am-form-row {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  width: 100%;
+}
+
+.am-form-column-100 {
+  width: 100%;
+}
+
+.am-form-column-50 {
+  width: calc(50% - calc(16px / 2));
+
+  @include am-media-max-width("m") {
+    width: 100%;
+  }
+}
+
+.am-form-column-25 {
+  width: calc(25% - calc(16px / calc(4 / 3)));
+
+  @include am-media-max-width("m") {
+    width: calc(50% - calc(16px / 2));
+  }
+
+  @include am-media-max-width("xs") {
+    width: 100%;
+  }
+}

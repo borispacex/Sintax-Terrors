@@ -1,0 +1,1 @@
+docker build -t gateway-service:0.1 .

@@ -1,0 +1,14 @@
+<div class="progress-bar__container" [style.height]="height">
+  <div
+    class="progress-bar__fill"
+    *ngIf="!indeterminate"
+    [style.width.%]="progress"
+    [style.background]="color"
+  ></div>
+
+  <div
+    class="progress-bar__indeterminate"
+    *ngIf="indeterminate"
+    [style.background]="color"
+  ></div>
+</div>

@@ -1,0 +1,22 @@
+.modal {
+  &__progress {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+  }
+}
+
+.ce__section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
+
+  img {
+    width: 100px;
+  }
+}

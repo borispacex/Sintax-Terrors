@@ -1,0 +1,23 @@
+.am-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+
+  &__input {
+    cursor: pointer;
+
+    &--invalid {
+      outline: 1px solid var(--am-wrong);
+      color: var(--am-wrong);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  &__label {
+    color: var(--am-preset-10);
+  }
+}

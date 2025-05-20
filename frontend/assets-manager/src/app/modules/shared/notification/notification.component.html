@@ -1,0 +1,25 @@
+<ng-container *ngIf="notifications$ | async as notifications">
+  <div class="notification" (click)="toggleNotifications()">
+    <div class="notification__container">
+      <i class="ami-bell-01 notification__icon"></i>
+      <span
+        *ngIf="notifications.items.length > 0"
+        class="notification__badge"
+        >{{ notifications.items.length }}</span
+      >
+    </div>
+
+    <div class="notification__menu am-sm-shadow" *ngIf="showNotificationMenu">
+      <div *ngFor="let item of notifications.items; trackBy: trackById">
+        <div class="notification__menu--item">
+          <i class="ami-bell-01 notification__menu--item-icon"></i>
+          <div class="notification__menu--item-container-title">
+            <a class="notification__menu--item-title">{{ item.head }}</a>
+            <a class="notification__menu--item-sub-title">{{ item.body }}</a>
+          </div>
+        </div>
+        <div class="notification__menu-divider"></div>
+      </div>
+    </div>
+  </div>
+</ng-container>

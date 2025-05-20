@@ -1,0 +1,26 @@
+<am-server-data-table
+  *ngIf="tableData$ | async as tableData"
+  [headers]="tableHeaders"
+  [data]="tableData"
+  [loading]="isLoading"
+  [showActions]="true"
+  [showUpdateAction]="true"
+  (pageChange)="onPageChange($event)"
+  (sortChange)="onSortChange($event)"
+  (onUpdateItem)="onUpdateItem($event, updateModal)"
+  (rowsPerPageChange)="onRowsPerPageChange($event)">
+  <div actions class="am-users-actions">
+    <button class="am-btn am-btn--primary" (click)="openModal(contentModal)">
+      <i class="ami-add-square-02 am-btn--icon"></i>
+      New User
+    </button>
+  </div>
+</am-server-data-table>
+
+<ng-template #updateModal>
+  <am-create-user [user]="activeUser"></am-create-user>
+</ng-template>
+
+<ng-template #contentModal>
+  <am-create-user></am-create-user>
+</ng-template>

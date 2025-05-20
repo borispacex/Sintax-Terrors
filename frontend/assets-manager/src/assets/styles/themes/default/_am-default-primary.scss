@@ -1,0 +1,28 @@
+.am-default-theme {
+  --am-primary-h: 227;
+  --am-primary-s: 75%;
+  --am-primary-l: 50%;
+
+  --am-primary-10: #f3f8ff;
+  --am-primary-20: #d0def5;
+  --am-primary-30: #829cf6;
+  --am-primary-40: #496ef1;
+  --am-primary: #2952e1;
+  --am-primary-60: #11309f;
+
+  --am-primary-70: hsl(
+    var(--am-primary-h),
+    var(--am-primary-s),
+    calc(var(--am-primary-l) + 20%)
+  );
+  --am-primary-80: hsl(
+    var(--am-primary-h),
+    var(--am-primary-s),
+    calc(var(--am-primary-l) + 30%)
+  );
+  --am-primary-90: hsl(
+    var(--am-primary-h),
+    var(--am-primary-s),
+    calc(var(--am-primary-l) + 40%)
+  );
+}

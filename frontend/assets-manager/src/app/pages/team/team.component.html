@@ -1,0 +1,30 @@
+<am-server-data-table
+  *ngIf="tableData$ | async as tableData"
+  [headers]="tableHeaders"
+  [data]="tableData"
+  [loading]="isLoading"
+  [showActions]="true"
+  [showUpdateAction]="true"
+  [showDeleteAction]="true"
+  (pageChange)="onPageChange($event)"
+  (sortChange)="onSortChange($event)"
+  (onRemoveItem)="onRemoveItem($event)"
+  (onUpdateItem)="openUpdateModal($event, updateTeamForm)"
+  (rowsPerPageChange)="onRowsPerPageChange($event)">
+  <section actions class="am-team-actions">
+    <button
+      class="am-btn am-btn--primary"
+      (click)="openCreateModal(createTeamForm)">
+      <i class="ami-add-square-02 am-btn--icon"></i>
+      New Team
+    </button>
+  </section>
+</am-server-data-table>
+
+<ng-template #createTeamForm>
+  <am-create-team></am-create-team>
+</ng-template>
+
+<ng-template #updateTeamForm>
+  <am-update-team [activeTeam]="activeTeam"></am-update-team>
+</ng-template>

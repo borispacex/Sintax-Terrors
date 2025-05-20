@@ -1,0 +1,28 @@
+.am-default-theme {
+  --am-accent-h: 47;
+  --am-accent-s: 92%;
+  --am-accent-l: 38%;
+
+  --am-accent-10: #fffff5;
+  --am-accent-20: #f3e7bc;
+  --am-accent-30: #e9d180;
+  --am-accent-40: #cdb14f;
+  --am-accent: #b89108;
+  --am-accent-60: #9a7a08;
+
+  --am-accent-70: hsl(
+    var(--am-accent-h),
+    var(--am-accent-s),
+    calc(var(--am-accent-l) + 20%)
+  );
+  --am-accent-80: hsl(
+    var(--am-accent-h),
+    var(--am-accent-s),
+    calc(var(--am-accent-l) + 30%)
+  );
+  --am-accent-90: hsl(
+    var(--am-accent-h),
+    var(--am-accent-s),
+    calc(var(--am-accent-l) + 40%)
+  );
+}

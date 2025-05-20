@@ -1,0 +1,79 @@
+<aside
+  class="sidebar am-sm-shadow"
+  [class.sidebar--collapsed]="isCollapsed"
+  [class.sidebar--mobile]="showMobileSidebar"
+>
+  <nav class="sidebar__nav">
+    <ng-container *ngIf="(user$ | async) as user">
+      <ul class="sidebar__menu">
+        <li class="sidebar__item">
+          <a
+            class="sidebar__link"
+            routerLink="/secure/dashboard"
+            routerLinkActive="sidebar__link--active"
+          >
+            <i class="ami-bar-chart-square-03 sidebar__icon"></i>
+            <span class="sidebar__text" *ngIf="!isCollapsed">Dashboard</span>
+          </a>
+        </li>
+
+        <li class="sidebar__item">
+          <a class="sidebar__link" routerLink="/secure/request" routerLinkActive="sidebar__link--active">
+            <i class="ami-annotation-plus sidebar__icon"></i>
+            <span class="sidebar__text" *ngIf="!isCollapsed">Requests</span>
+          </a>
+        </li>
+
+        <li class="sidebar__item">
+          <a class="sidebar__link" routerLink="/secure/assignment" routerLinkActive="sidebar__link--active">
+            <i class="ami-check-contained sidebar__icon"></i>
+            <span class="sidebar__text" *ngIf="!isCollapsed">Assignments</span>
+          </a>
+        </li>
+
+        <li class="sidebar__item" *ngIf="user.role !== 'USER'">
+          <a
+            class="sidebar__link"
+            routerLink="/secure/user"
+            routerLinkActive="sidebar__link--active"
+          >
+            <i class="ami-user-profile-01 sidebar__icon"></i>
+            <span class="sidebar__text" *ngIf="!isCollapsed">Users</span>
+          </a>
+        </li>
+
+        <li class="sidebar__item" *ngIf="user.role !== 'USER'">
+          <a
+            class="sidebar__link"
+            routerLink="/secure/employee"
+            routerLinkActive="sidebar__link--active"
+          >
+            <i class="ami-user-profile-01 sidebar__icon"></i>
+            <span class="sidebar__text" *ngIf="!isCollapsed">Employees</span>
+          </a>
+        </li>
+
+      <li class="sidebar__item" *ngIf="user.role !== 'USER'">
+        <a class="sidebar__link" routerLink="/secure/asset" routerLinkActive="sidebar__link--active">
+          <i class="ami-computer sidebar__icon"></i>
+          <span class="sidebar__text" *ngIf="!isCollapsed">Assets</span>
+        </a>
+      </li>
+
+        <li class="sidebar__item" *ngIf="user.role !== 'USER'">
+          <a class="sidebar__link" routerLink="/secure/team" routerLinkActive="sidebar__link--active">
+            <i class="ami-users-profiles-01 sidebar__icon"></i>
+            <span class="sidebar__text" *ngIf="!isCollapsed">Teams</span>
+          </a>
+        </li>
+
+        <li class="sidebar__item" *ngIf="user.role !== 'USER'">
+          <a class="sidebar__link" routerLink="/secure/workspace" routerLinkActive="sidebar__link--active">
+            <i class="ami-home-01 sidebar__icon"></i>
+            <span class="sidebar__text" *ngIf="!isCollapsed">Workspaces</span>
+          </a>
+        </li>
+      </ul>
+    </ng-container>
+  </nav>
+</aside>

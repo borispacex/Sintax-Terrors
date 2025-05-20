@@ -1,0 +1,36 @@
+/*
+* CUSTOM SCROLL
+* ====
+*/
+@import "am-mixins";
+
+.am-custom-scroll {
+  @extend %am-custom-scroll-firefox;
+  @extend %am-custom-scroll-webkit;
+}
+
+.am-custom-scroll-hidden {
+  @extend %am-custom-scroll-hidden-firefox;
+  @extend %am-custom-scroll-hidden-webkit;
+}
+
+.am-custom-scroll-hover {
+  @extend %am-custom-scroll-firefox;
+  @extend %am-custom-scroll-webkit;
+  @extend %am-custom-scroll-hover;
+}
+
+.chat-default-theme,
+.chat-dark-theme {
+  .am-custom-scroll::-webkit-scrollbar-thumb,
+  .am-custom-scroll-hover::-webkit-scrollbar-thumb,
+  .am-custom-scroll-hidden::-webkit-scrollbar-thumb {
+    background-color: var(--am-preset-80);
+  }
+
+  .am-custom-scroll,
+  .am-custom-scroll-hover,
+  .am-custom-scroll-hidden {
+    scrollbar-color: var(--am-preset-80) transparent;
+  }
+}

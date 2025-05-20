@@ -1,0 +1,87 @@
+<div class="modal">
+  <form [formGroup]="assignmentForm">
+    <am-autocomplete-dropdown
+      label="Employee"
+      placeholder="Select a employee"
+      [multiple]="false"
+      [disabled]="employee !== null"
+      [items]="employees$ | async"
+      (change)="onChangeItem($event)"
+      (onSearch)="onSearchEmployee($event)"
+      formControlName="employee">
+    </am-autocomplete-dropdown>
+
+    <ng-container *ngIf="(assetsByEmployee$ | async) as assetsByEmployee">
+      <div class="modal__divider"></div>
+      <h3 class="modal__label">Current Assets</h3>
+      <div class="modal__table">
+        <div class="modal__table-header">
+          <div class="modal__table-cell--header">
+            Asset
+          </div>
+          <div class="modal__table-cell--header">
+            # Serial
+          </div>
+          <div class="modal__table-cell--header modal__table-cell--left">
+            Status
+          </div>
+        </div>
+        <ng-container *ngIf="(assetsAggregated$ | async) as assetToDelete">
+          <div *ngIf="assetsByEmployee.length > 0">
+            <div class="modal__table-row" *ngFor="let asset of assetsByEmployee">
+              <div class="modal__table-cell">
+                {{asset.model}}
+              </div>
+              <div class="modal__table-cell">
+                {{ asset.serialNumber}}
+              </div>
+              <div class="modal__table-cell modal__table-cell--left">
+                <i
+                  *ngIf="!isAssetMarkedForDeletion(asset, assetToDelete)"
+                  class="ami-trash-01 modal__icon"
+                  (click)="deleteAsset(asset)">
+                </i>
+                <i
+                  *ngIf="isAssetMarkedForDeletion(asset, assetToDelete)"
+                  class="ami-arrow-refresh-01 modal__icon--success"
+                  (click)="restoreAsset(asset.id)">
+                </i>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <div *ngIf="assetsByEmployee.length === 0" class="modal__no-data">
+          <p>No assets assigned..</p>
+        </div>
+      </div>
+    </ng-container>
+    <div class="modal__divider"></div>
+    <am-input
+      label="Note"
+      placeholder="Note..."
+      class="force-focus"
+      formControlName="note">
+    </am-input>
+    <div class="modal__divider"></div>
+    <am-input
+      label="Reason"
+      placeholder="Reason..."
+      class="force-focus"
+      formControlName="reason">
+    </am-input>
+  </form>
+
+
+
+  <div class="modal__actions">
+    <button class="am-btn am-btn__full am-btn--danger" (click)="closeModal()">
+      Close
+    </button>
+    <button
+      class="am-btn am-btn__full am-btn--primary"
+      (click)="saveAssignment()"
+      [disabled]="!(assignmentForm.valid && (assetsAggregated$ | async)!.length > 0)">
+      Save
+    </button>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="custom-modal-content">
+  <form [formGroup]="workspaceForm">
+    <am-autocomplete-dropdown
+      label="City"
+      placeholder="Select a city"
+      [multiple]="false"
+      [items]="this.items"
+      formControlName="city">
+    </am-autocomplete-dropdown>
+    <am-input
+      label="Location"
+      placeholder="Location"
+      class="force-focus"
+      formControlName="location">
+    </am-input>
+  </form>
+
+  <div class="modal__actions">
+    <button class="am-btn am-btn__full am-btn--danger" (click)="closeModal()">
+      Close
+    </button>
+    <button
+      class="am-btn am-btn__full am-btn--primary"
+      (click)="workspace? updateWorkspace() : createWorkspace()"
+      [disabled]="!workspaceForm.valid">
+      {{workspace ? 'Update' : 'Create'}}
+    </button>
+  </div>
+</div>

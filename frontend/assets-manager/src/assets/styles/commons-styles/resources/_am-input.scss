@@ -1,0 +1,102 @@
+.am-form-group {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+
+  .am-outter-icon {
+    font-size: 19px;
+    position: absolute;
+    right: 0px;
+    top: 12px;
+  }
+
+  .am-outter-icon-success {
+    color: var(--am-good);
+  }
+
+  .am-outter-icon-error {
+    color: var(--am-wrong);
+  }
+}
+
+.am-form-placeholder {
+  color: var(--am-preset-40);
+  display: none;
+  font-size: 9px;
+  left: 11px;
+  position: absolute;
+  top: 6px;
+}
+
+.am-form-control {
+  background-color: var(--am-preset-90);
+  border: 1px solid var(--am-preset);
+  border-radius: 8px;
+  box-sizing: border-box;
+  min-height: 45px;
+  padding: 15px 10px 8px 10px;
+  resize: none;
+  width: 100%;
+}
+
+.am-form-control-valid {
+  border: 1px solid var(--am-good);
+  width: calc(100% - 25px);
+}
+
+.am-form-control-invalid {
+  border: 1px solid var(--am-wrong);
+  width: calc(100% - 25px);
+}
+
+.am-form-control:hover {
+  border: 1px solid var(--am-accent-second-70);
+}
+
+.am-form-control:focus {
+  border: 1px solid var(--am-accent-70);
+  outline: none;
+}
+
+.am-form-control:not(:placeholder-shown) + .am-form-placeholder {
+  display: initial;
+}
+
+.am-form-control::-webkit-outer-spin-button,
+.am-form-control::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.am-form-control[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.am-form-message {
+  display: block;
+  font-size: 14px;
+  line-height: 14px;
+  margin-top: 3px;
+}
+
+.am-form-message-success {
+  color: var(--am-good);
+}
+
+.am-form-message-error {
+  color: var(--am-wrong);
+}
+
+.am-with-inner-icon-input {
+  .am-form-control {
+    padding-right: 32px;
+  }
+
+  .am-inner-icon {
+    color: var(--am-preset-50);
+    font-size: 18px;
+    position: absolute;
+    right: 10px;
+    top: 14px;
+  }
+}

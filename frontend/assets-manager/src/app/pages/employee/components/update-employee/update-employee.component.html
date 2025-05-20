@@ -1,0 +1,124 @@
+<form [formGroup]="employeeForm">
+  <section class="ce__section">
+    <am-input
+      label="Name"
+      placeholder="name"
+      class="force-focus"
+      formControlName="firstName">
+    </am-input>
+
+    <am-input
+      label="Middle Name"
+      placeholder="middle name"
+      class="force-focus"
+      formControlName="middleName">
+    </am-input>
+  </section>
+
+  <section class="ce__section">
+    <am-input
+      label="Lastname"
+      placeholder="lastname"
+      class="force-focus"
+      formControlName="lastName">
+    </am-input>
+
+    <am-input
+      label="Second Lastname"
+      placeholder="second lastname"
+      class="force-focus"
+      formControlName="secondLastName">
+    </am-input>
+  </section>
+
+  <section class="ce__section">
+    <am-input
+      label="Image"
+      placeholder="image"
+      [type]="'file'"
+      class="force-focus"
+      (change)="onImageChange($event)">
+    </am-input>
+
+    <img [src]="activeEmployee.uploadedImageID">
+  </section>
+
+  <section class="ce__section">
+    <am-autocomplete-dropdown
+      label="Team"
+      placeholder="Select A Team"
+      [multiple]="false"
+      [items]="(teams$ | async) ?? []"
+      (onSearch)="searchTeams($event)"
+      formControlName="teamId"></am-autocomplete-dropdown>
+
+    <am-autocomplete-dropdown
+      label="User"
+      placeholder="Select A User"
+      [multiple]="false"
+      [items]="(users$ | async) ?? []"
+      (onSearch)="searchUsers($event)"
+      formControlName="userId"></am-autocomplete-dropdown>
+  </section>
+
+  <section class="ce__section">
+    <am-input
+      label="Personal Email"
+      placeholder="personal email"
+      class="force-focus"
+      formControlName="personalEmail">
+    </am-input>
+
+    <am-input
+      label="Work Email"
+      placeholder="work email"
+      class="force-focus"
+      formControlName="workEmail">
+    </am-input>
+  </section>
+
+  <section class="ce__section">
+    <am-autocomplete-dropdown
+      label="City"
+      [multiple]="false"
+      [items]="employeeCity"
+      placeholder="Select A City"
+      formControlName="city"></am-autocomplete-dropdown>
+
+    <am-autocomplete-dropdown
+      label="Status"
+      placeholder="Select A Status"
+      [multiple]="false"
+      [items]="employeeStatus"
+      formControlName="status"></am-autocomplete-dropdown>
+  </section>
+
+  <section class="ce__section">
+    <am-input
+      label="CI"
+      placeholder="ci"
+      class="force-focus"
+      formControlName="ci">
+    </am-input>
+
+    <am-input
+      label="Cellphone Number"
+      placeholder="cellphone number"
+      class="force-focus"
+      formControlName="cellphoneNumber">
+    </am-input>
+  </section>
+</form>
+
+<article class="modal__actions">
+  <button class="am-btn am-btn__full am-btn--danger" (click)="closeModal()">
+    Close
+  </button>
+
+  <button
+    class="am-btn am-btn__full am-btn--primary"
+    (click)="updateEmployee()"
+    [disabled]="!employeeForm.valid">
+    Update
+  </button>
+</article>

@@ -1,0 +1,14 @@
+<label class="checkbox-wrapper">
+  <input
+    type="checkbox"
+    [checked]="value"
+    (change)="toggleCheckbox($event)"
+    [disabled]="disabled"
+    [class.invalid]="control?.touched && control?.invalid"
+  />
+  <span class="checkbox-label">{{ label }}</span>
+</label>
+
+<div *ngIf="errorMessage" class="am-input__error">
+  {{ errorMessage }}
+</div>

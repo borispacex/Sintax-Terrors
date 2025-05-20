@@ -1,0 +1,40 @@
+<ng-container *ngIf="(user$ | async) as user">
+  <div class="profile">
+    <div class="profile__header" (click)="toggleUserMenu()">
+      <img
+        class="profile__avatar"
+        [class.profile__avatar--lg]="size === 'lg'"
+        [class.profile__avatar--md]="size === 'md'"
+        [class.profile__avatar--sm]="size === 'sm'"
+        src="assets/images/profile_default.png"
+        alt="User"
+      />
+      <div *ngIf="detail" class="profile__user-info">
+        <div class="profile__user-data">
+          <h3 class="profile__username">{{user? user.username : "Jhonn Doe"}}</h3>
+          <h4 class="profile__email">{{user? user.email : "jhonndoe@gmail.com"}}</h4>
+        </div>
+        <i
+          class="profile__toggle-icon"
+          [class.ami-chevron-up]="showUserMenu"
+          [class.ami-chevron-down]="!showUserMenu"></i>
+      </div>
+    </div>
+
+    <div class="profile__menu am-sm-shadow" *ngIf="showUserMenu">
+      <div class="profile__menu-item">
+        <i class="ami-user-profile-02 profile__menu-icon"></i>
+        <a class="profile__menu-text">Profile</a>
+      </div>
+      <div class="profile__menu-item">
+        <i class="ami-settings profile__menu-icon"></i>
+        <a class="profile__menu-text">Configuration</a>
+      </div>
+      <div class="profile__menu-divider"></div>
+      <div class="profile__menu-item" (click)="logout()">
+        <i class="ami-logout-01 profile__menu-icon"></i>
+        <a class="profile__menu-text">Logout</a>
+      </div>
+    </div>
+  </div>
+</ng-container>

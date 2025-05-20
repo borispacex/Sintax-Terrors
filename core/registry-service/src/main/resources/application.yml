@@ -1,0 +1,24 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: registry-service
+  cloud:
+    config:
+      import-check:
+        enabled: false
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+  instance:
+    prefer-ip-address: true
+
+logging:
+  level:
+    com:
+      netflix:
+        eureka: INFO
+        discovery: INFO

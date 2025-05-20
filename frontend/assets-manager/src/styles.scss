@@ -1,0 +1,22 @@
+@import "assets/styles/am-system-styles";
+@import '@samuelbaz/am-ui/styles/am-system-styles';
+
+* {
+  font-family: 'Montserrat', sans-serif;
+
+  p {
+    margin: 0;
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 100vh;
+  margin: 0;
+
+  am-app-root {
+    height: 100%;
+  }
+}

@@ -1,0 +1,28 @@
+<!-- table -->
+<am-server-data-table
+  *ngIf="tableData$ | async as tableData"
+  [headers]="tableHeaders"
+  [data]="tableData"
+  [loading]="isLoading"
+  [showActions]="true"
+  [showUpdateAction]="true"
+  [showDeleteAction]="true"
+  (pageChange)="onPageChange($event)"
+  (sortChange)="onSortChange($event)"
+  (onRemoveItem)="onRemoveItem($event)"
+  (onUpdateItem)="onUpdateItem($event, updateModal)"
+  (rowsPerPageChange)="onRowsPerPageChange($event)">
+  <div actions class="am-request-actions">
+    <button class="am-btn am-btn--primary" (click)="openModal(registerModal)">
+      <i class="ami-add-square-02 am-btn--icon"></i>
+      New Request
+    </button>
+  </div>
+</am-server-data-table>
+
+<ng-template #registerModal>
+  <am-create-request></am-create-request>
+</ng-template>
+<ng-template #updateModal>
+  <am-update-request [activeRequest]="activeRequest"></am-update-request>
+</ng-template>
