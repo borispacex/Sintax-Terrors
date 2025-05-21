@@ -38,7 +38,7 @@ services:
       dockerfile: Dockerfile
     container_name: asset-service
     environment:
-      MYSQL_HOST: localhost
+      MYSQL_HOST: mysql-db
       MYSQL_PORRT: 3306
       MYSQL_DB: asset_service_db
       MYSQL_USERNAME: root
@@ -70,5 +70,12 @@ services:
       - app-network
     depends_on:
       - mysql-db    
+
+
+networks:
+  app-network:  
+    driver: bridge
+    external: true
+
 volumes:
   mysql_db_data:
