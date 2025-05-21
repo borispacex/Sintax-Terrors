@@ -1,6 +1,8 @@
 FROM maven:3.9.6-eclipse-temurin-17-alpine as builder
 WORKDIR /usr/src/app
-COPY . /usr/src/app
+COPY ./core/registry-service/pom.xml ./pom.xml
+RUN mvn dependency:go-offline
+COPY ./core/registry-service/ /usr/src/app
 RUN mvn clean package -DskipTests
 
 FROM eclipse-temurin:17-jre-alpine
