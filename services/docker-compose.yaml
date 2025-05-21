@@ -8,6 +8,8 @@ services:
       MYSQL_DATABASE: testdb
     ports:
       - "3306:3306"
+    networks:
+      - app-network
     volumes:
       - mysql_db_data:/var/lib/mysql
       - ./init-multiple-dbs.sql:/docker-entrypoint-initdb.d/init-multiple-dbs.sql
@@ -26,6 +28,8 @@ services:
       REGISTER_PORT: 8761
     ports:
       - "8088:8088"
+    networks:
+      - app-network
     depends_on:
       - mysql-db
   asset-service:
@@ -43,6 +47,8 @@ services:
       REGISTER_PORT: 8761
     ports:
       - "8089:8089"
+    networks:
+      - app-network
     depends_on:
       - mysql-db
   notification-service:
@@ -60,6 +66,8 @@ services:
       REGISTER_PORT: 8761
     ports:
       - "8090:8090"
+    networks:
+      - app-network
     depends_on:
       - mysql-db    
 volumes:
